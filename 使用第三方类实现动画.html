@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>使用第三方类实现动画</title>
+    <link href="https://cdn.bootcss.com/animate.css/3.7.0/animate.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/vue/2.5.18-beta.0/vue.js"></script>
+    <!-- 入场使用bounceIn 离场使用bounceOut -->
+</head>
+
+<body>
+    <div class="app">
+        <input type="button" value="toggle" @click='flag=!flag'>
+        <!-- 需求: 点击annual，让H3显示，再点击，让H3隐藏 -->
+        <!-- 使用 :duration='毫秒值' 来统一设置 入场和离场 时候的动画时长 -->
+        <!-- 使用 :duration='{enter: 200, leave: 400}' 来分别设置 入场和离场 时候的动画时长 -->
+        <transition enter-active-class='bounceIn' leave-active-class='bounceOut' :duration='200'>
+            <h3 v-if='flag'>这是一个H3</h3>
+        </transition>
+
+        <!-- <transition enter-active-class='animated bounceIn' leave-active-class='animated bounceOut'>
+            <h3 v-if='flag'>这是一个H3</h3>
+        </transition>
+
+        <transition enter-active-class='bounceIn' leave-active-class='bounceOut'>
+            <h3 v-if='flag' class="animated">这是一个H3</h3>
+        </transition> -->
+        <!-- class 类使用的方法 1. 使用数组"['thin','red']" -->
+        <!-- class 类使用的方法 2. 使用数组 + 三目"['thin','red', isactive:'active':'']" -->
+        <!-- class 类使用的方法 2. 使用数组 + 对象"['thin','red', isactive:'active':'']" -->
+    </div>
+</body>
+<script>
+let vm = new Vue({
+    el: '.app',
+    data: {
+        flag: true
+    },
+    methods: {
+
+    }
+})
+</script>
+
+</html>

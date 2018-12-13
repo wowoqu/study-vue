@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>修改v-前缀</title>
+    <script src="https://cdn.bootcss.com/vue/2.5.18-beta.0/vue.js"></script>
+    <style>
+        .my-enter,
+        .my-leave-to{
+            opacity: 0;
+            transform: translateY(80px);
+        }
+        .my-enter-active,
+        .my-leave-active{
+            transition: all 0.4s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app">
+        <input type="button" value="toggle" @click='flag=!flag'>
+        <!-- 加前缀区分不同组之间的动画 -->
+        <transition name='my'>
+            <h3 v-if='flag'>这是一个H3</h3>
+        </transition>
+    </div>
+</body>
+<script>
+let vm = new Vue({
+    el: '.app',
+    data: {
+        flag: true
+    },
+    methods: {
+
+    }
+})
+</script>
+
+</html>
